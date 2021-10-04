@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from requests_html import AsyncHTMLSession
-from sele import gethtml
+from sele import UseSele
 
 app = FastAPI()
 
@@ -20,6 +20,11 @@ async def func(url:str):
 
 @app.get('/sele')
 
-def fk(url:str):
-    return {"html":gethtml(url)}
+def sele_func(url:str):
+    useSele = UseSele(url)
+    return {"html":useSele.gethtml()}
 
+@app.get('/sele_wait')
+def sele_wait(url:str,csss:str):
+    useSele = UseSele(url)
+    return {"html":useSele.waitEleme(csss)} 
