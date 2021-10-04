@@ -22,3 +22,4 @@ async def func(url:str):
 
 def fk(url:str):
     return {"html":gethtml(url)}
+
